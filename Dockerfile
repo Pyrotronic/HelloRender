@@ -6,7 +6,7 @@ EXPOSE 8080
 # Строим приложение
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["HelloRender.csproj", "./"]
+COPY HelloRender/HelloRender.csproj ./HelloRender/
 RUN dotnet restore "HelloRender.csproj"
 COPY . .
 RUN dotnet publish "HelloRender.csproj" -c Release -o /app/publish
