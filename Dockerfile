@@ -1,5 +1,5 @@
 # Используем образ .NET SDK для сборки
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 # Копируем файл проекта
@@ -15,7 +15,7 @@ COPY . .
 RUN dotnet publish HelloRender/HelloRender.csproj -c Release -o /out
 
 # Используем ASP.NET Core образ для запуска
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /out ./
 
